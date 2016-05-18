@@ -45,7 +45,7 @@ class { 'named': }
 To setup as resolver with using a forwarder:
 
 ```puppet
-class { 'named': 
+class { 'named':
 	$upstreamresolver => [ "8.8.8.8", "8.8.4.4" ],
 }
 ```
@@ -53,10 +53,10 @@ class { 'named':
 To setup a zone using a specific file:
 
 ```puppet
-	class { 'named': 
+	class { 'named':
 		resolver => false,
-	}	
-	
+	}
+
 	named::zone { 'ccc.local':
 		zonename => "ccc.local",
 		zonefile => "puppet:///masterdns/ccc.local",
@@ -66,10 +66,10 @@ To setup a zone using a specific file:
 To setup a zone using it's default template
 
 ```puppet
-	class { 'named': 
+	class { 'named':
 		resolver => false,
-	}	
-	
+	}
+
 	named::zone { 'ccc.local':
 		zonename => "ccc.local",
 	}
@@ -78,20 +78,20 @@ To setup a zone using it's default template
 To setup a zone as slave:
 
 ```puppet
-	class { 'named': 
+	class { 'named':
 		resolver => false,
-	}	
-	
+	}
+
 	named::zone { 'ccc.local':
 		zonename => "ccc.local",
 		zonemaster => "1.2.3.4",
 	}
 ```
 
-Add a server to be notified on every zone change 
+Add a server to be notified on every zone change
 
 ```puppet
-	class { 'named': 
+	class { 'named':
 		alsonotify => [ '192.168.56.15' ],
 	}
 ```
@@ -114,11 +114,13 @@ Tested in CentOS 6
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+We are pushing to have acceptance testing in place, so any new feature should
+have some test to check both presence and absence of any feature
 
-## Release Notes/Contributors/Etc **Optional**
+### Contributing
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Added some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request

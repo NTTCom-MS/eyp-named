@@ -11,7 +11,11 @@
 
 options {
 	listen-on port 53 { any; };
+<% if @ipv6 %>
+	listen-on-v6 port 53 { any; };
+<% else %>
 	listen-on-v6 port 53 { none; };
+<% end %>
 	directory 	"<%= scope.lookupvar('named::params::directory') %>";
 	dump-file 	"/var/named/data/cache_dump.db";
         statistics-file "/var/named/data/named_stats.txt";

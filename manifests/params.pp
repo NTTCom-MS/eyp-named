@@ -21,6 +21,9 @@ class named::params {
 					$osuser='named'
 
 					$managed_keys_dir='/var/named/dynamic'
+
+					$sysconfig_file=undef
+					$sysconfig_template=undef
 				}
 				default: { fail("Unsupported RHEL/CentOS version! - $::operatingsystemrelease")  }
 			}
@@ -47,6 +50,9 @@ class named::params {
 							$localconfig_file='/etc/bind/named.conf.local'
 
 							$osuser='bind'
+
+							$sysconfig_file='/etc/default/bind9'
+							$sysconfig_template='debian.erb'
 						}
 						default: { fail("Unsupported Ubuntu version! - $::operatingsystemrelease")  }
 					}
