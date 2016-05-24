@@ -1,15 +1,18 @@
 ;
-; puppet generated file
-; 
-$TTL	3600
+; puppet managed file
+;
+$TTL	<%= @default_ttl %>
 @		IN SOA	<%= @zonename %>. root (
-					201503041		; serial
-					3600			; refresh
-					600			; retry
-					86400			; expiry
-					60)			; min TTL
+					<%= @serial %>		; serial
+					<%= @refresh %>			; refresh
+					<%= @retry %>			; retry
+					<%= @expiry %>			; expiry
+					<%= @minttl %>)			; min TTL
 
 	       		IN NS		ns.<%= @zonename %>.
 
-ns.<%= @zonename %>. IN A 127.0.0.1
-
+<% if defined?(@ns) -%>
+<% @ns.each do |val| -%>
+ns.<%= @zonename %>. IN A <%= val %>
+<% end -%>
+<% end -%>

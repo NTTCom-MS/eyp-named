@@ -3,15 +3,15 @@
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with named](#setup)
+2. [Module Description](#module-description)
+3. [Setup](#setup)
     * [What named affects](#what-named-affects)
     * [Setup requirements](#setup-requirements)
     * [Beginning with named](#beginning-with-named)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+4. [Usage](#usage)
+5. [Reference](#reference)
+5. [Limitations](#limitations)
+6. [Development](#development)
 
 ## Overview
 
@@ -53,48 +53,75 @@ class { 'named':
 To setup a zone using a specific file:
 
 ```puppet
-	class { 'named':
-		resolver => false,
-	}
+class { 'named':
+	resolver => false,
+}
 
-	named::zone { 'ccc.local':
-		zonename => "ccc.local",
-		zonefile => "puppet:///masterdns/ccc.local",
-	}
+named::zone { 'ccc.local':
+	zonename => "ccc.local",
+	zonefile => "puppet:///masterdns/ccc.local",
+}
 ```
 
 To setup a zone using it's default template
 
 ```puppet
-	class { 'named':
-		resolver => false,
-	}
+class { 'named':
+	resolver => false,
+}
 
-	named::zone { 'ccc.local':
-		zonename => "ccc.local",
-	}
+named::zone { 'ccc.local':
+	zonename => "ccc.local",
+}
 ```
 
 To setup a zone as slave:
 
 ```puppet
-	class { 'named':
-		resolver => false,
-	}
+class { 'named':
+	resolver => false,
+}
 
-	named::zone { 'ccc.local':
-		zonename => "ccc.local",
-		zonemaster => "1.2.3.4",
-	}
+named::zone { 'ccc.local':
+	zonename => "ccc.local",
+	zonemaster => "1.2.3.4",
+}
 ```
 
 Add a server to be notified on every zone change
 
 ```puppet
-	class { 'named':
-		alsonotify => [ '192.168.56.15' ],
-	}
+class { 'named':
+	alsonotify => [ '192.168.56.15' ],
+}
 ```
+
+Add an additional server to notify for a specific zone:
+
+```puppet
+named::zone { 'example.local':
+  zonefile => 'puppet:///dnsmaster/example.local',
+  notifyslaves => true,
+  alsonotify => [ '192.168.56.15' ],
+}
+```
+
+Add a key to allow dynamic updates to a zone:
+
+```puppet
+named::key { 'kk':
+}
+
+named::zone { 'example.local':
+ zonename => "example.local",
+ zonefile => 'puppet:///dnsmaster/example.local',
+ notifyslaves => true,
+ replace => false,
+ allowtransfer => [ 'any' ],
+ allowupdate => [ 'key "kk"' ],
+}
+```
+
 
 ## Usage
 
@@ -110,7 +137,7 @@ with things. (We are working on automating this section!)
 
 ## Limitations
 
-Tested in CentOS 6
+Tested on CentOS 6
 
 ## Development
 
