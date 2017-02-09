@@ -10,11 +10,6 @@ class named (
               $ipv6             = false,
             ) inherits named::params {
 
-  if defined(Class['ntteam'])
-  {
-    ntteam::tag{ 'named': }
-  }
-
   if ($upstreamresolver) {
     validate_array($upstreamresolver)
   }

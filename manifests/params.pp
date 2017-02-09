@@ -3,7 +3,7 @@ class named::params {
   case $::osfamily
   {
     'redhat':
-        {
+    {
       case $::operatingsystemrelease
       {
         /^6.*$/:
@@ -27,7 +27,6 @@ class named::params {
         }
         default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
       }
-
     }
     'Debian':
     {
