@@ -46,7 +46,7 @@ To setup as resolver with using a forwarder:
 
 ```puppet
 class { 'named':
-	$upstreamresolver => [ "8.8.8.8", "8.8.4.4" ],
+	upstreamresolver => [ "8.8.8.8", "8.8.4.4" ],
 }
 ```
 

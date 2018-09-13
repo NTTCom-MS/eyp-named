@@ -4,11 +4,11 @@ class named::params {
   {
     'redhat':
     {
+      $packages= [ 'bind', 'bind-utils' ]
       case $::operatingsystemrelease
       {
-        /^6.*$/:
+        /^[67].*$/:
         {
-          $packages= [ 'bind', 'bind-utils' ]
           $confdir='/etc/named'
           $servicename='named'
           $directory='/var/named'
@@ -30,6 +30,7 @@ class named::params {
     }
     'Debian':
     {
+      $packages= [ 'bind9', 'bind9utils', 'dnsutils' ]
       case $::operatingsystem
       {
         'Ubuntu':
@@ -38,7 +39,6 @@ class named::params {
           {
             /^14.*$/:
             {
-              $packages= [ 'bind9', 'bind9utils', 'dnsutils' ]
               $confdir='/etc/bind'
               $servicename='bind9'
               $directory='/var/cache/bind'

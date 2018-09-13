@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.7
+
+* CentOS 7 support
+
 ## 0.2.6
 
 * configuration file cleanup
