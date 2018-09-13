@@ -19,6 +19,7 @@ define named::zone(
                     $expiry        = '86400',
                     $minttl        = '60',
                     $default_ttl   = '3600',
+                    $forwarders    = [],
                   ) {
 
   validate_string($zonename)

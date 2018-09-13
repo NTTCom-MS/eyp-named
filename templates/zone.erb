@@ -1,30 +1,38 @@
 
 zone "<%= @zonename %>" {
+<% if @forwarders.any? -%>
+	type forward;
+	forward only;
+	forwarders {
+		<% @forwarders.each do |val| -%><%= val %>;<% end %>
+	};
+<% else -%>
 	file "<%= scope.lookupvar('named::params::zonedir')%>/<%= @zonename %>";
-<% if defined?(@zonemaster) -%>
+	<%- if defined?(@zonemaster) -%>
 	masters { <%= @zonemaster %>; };
 	type slave;
-<% else -%>
+	<%- else -%>
 	type master;
-<% if @notifyslaves -%>
+		<%- if @notifyslaves -%>
 	notify yes;
-<% else -%>
+		<%- else -%>
 	notify no;
-<% end -%>
-<% end -%>
-<% if defined?(@allowtransfer) -%>
+		<%- end -%>
+	<%- end -%>
+	<%- if defined?(@allowtransfer) -%>
 	allow-transfer {
 		<% @allowtransfer.each do |val| -%><%= val %>;<% end %>
 	};
-<% end -%>
-<% if defined?(@allowupdate) -%>
+	<%- end -%>
+	<%- if defined?(@allowupdate) -%>
 	allow-update {
 		<% @allowupdate.each do |val| -%><%= val %>;<% end %>
 	};
-<% end -%>
-<% if defined?(@alsonotify) -%>
+	<%- end -%>
+	<%- if defined?(@alsonotify) -%>
 	also-notify {
 		<% @alsonotify.each do |val| -%><%= val %>;<% end %>
 	};
+	<%- end -%>
 <% end -%>
 };

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.9
+
+* added conditional forwarding support
+
 ## 0.2.8
 
 * added variable to be able to disable bind-utils package management
