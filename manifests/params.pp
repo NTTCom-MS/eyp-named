@@ -4,7 +4,8 @@ class named::params {
   {
     'redhat':
     {
-      $packages= [ 'bind', 'bind-utils' ]
+      $packages= [ 'bind',  ]
+      $utils_packages = [ 'bind-utils' ]
       case $::operatingsystemrelease
       {
         /^[67].*$/:
@@ -30,7 +31,8 @@ class named::params {
     }
     'Debian':
     {
-      $packages= [ 'bind9', 'bind9utils', 'dnsutils' ]
+      $packages= [ 'bind9' ]
+      $utils_packages = [ 'bind9utils', 'dnsutils' ]
       case $::operatingsystem
       {
         'Ubuntu':

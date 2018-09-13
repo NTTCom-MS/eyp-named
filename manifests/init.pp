@@ -8,6 +8,7 @@ class named (
               $controls         = undef, #TODO: rewrite
               $ensure           = 'installed',
               $ipv6             = false,
+              $manage_utils     = true,
             ) inherits named::params {
 
   if ($upstreamresolver) {
@@ -39,6 +40,13 @@ class named (
 
   package { $named::params::packages:
     ensure => $ensure,
+  }
+
+  if($manage_utils)
+  {
+    package { $named::params::utils_packages:
+      ensure => $ensure,
+    }
   }
 
   if($named::params::sysconfig_file!=undef)
