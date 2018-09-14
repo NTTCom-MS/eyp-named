@@ -42,7 +42,19 @@ To setup as resolver (default):
 class { 'named': }
 ```
 
-To setup as resolver with using a forwarder:
+## Usage
+
+### conditional forwarding
+
+```puppet
+class { 'named': }
+
+named::zone { 'systemadmin.es':
+  forwarders => [ '8.8.8.8' ]
+}
+```
+
+### setup as resolver with using a forwarder
 
 ```puppet
 class { 'named':
@@ -50,7 +62,7 @@ class { 'named':
 }
 ```
 
-To setup a zone using a specific file:
+### setup a zone using a specific file
 
 ```puppet
 class { 'named':
@@ -63,7 +75,7 @@ named::zone { 'ccc.local':
 }
 ```
 
-To setup a zone using it's default template
+### setup a zone using it's default template
 
 ```puppet
 class { 'named':
@@ -75,7 +87,7 @@ named::zone { 'ccc.local':
 }
 ```
 
-To setup a zone as slave:
+### setup a zone as slave
 
 ```puppet
 class { 'named':
@@ -88,7 +100,7 @@ named::zone { 'ccc.local':
 }
 ```
 
-Add a server to be notified on every zone change
+### add a server to be notified on every zone change
 
 ```puppet
 class { 'named':
@@ -96,7 +108,7 @@ class { 'named':
 }
 ```
 
-Add an additional server to notify for a specific zone:
+### add an additional server to notify for a specific zone
 
 ```puppet
 named::zone { 'example.local':
@@ -106,7 +118,7 @@ named::zone { 'example.local':
 }
 ```
 
-Add a key to allow dynamic updates to a zone:
+### add a key to allow dynamic updates to a zone
 
 ```puppet
 named::key { 'kk':
@@ -121,12 +133,6 @@ named::zone { 'example.local':
  allowupdate => [ 'key "kk"' ],
 }
 ```
-
-
-## Usage
-
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
 
 ## Reference
 
