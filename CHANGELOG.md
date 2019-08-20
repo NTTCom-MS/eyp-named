@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.3.0
+
+* MAJOR CHANGES:
+  - rewritten zone management
+  - added record management
+
 ## 0.2.9
 
 * added conditional forwarding support

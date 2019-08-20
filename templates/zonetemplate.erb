@@ -2,17 +2,17 @@
 ; puppet managed file
 ;
 $TTL	<%= @default_ttl %>
-@		IN SOA	<%= @zonename %>. root (
+@		IN SOA	<%= @soa %>. root (
 					<%= @serial %>		; serial
 					<%= @refresh %>			; refresh
 					<%= @retry %>			; retry
 					<%= @expiry %>			; expiry
 					<%= @minttl %>)			; min TTL
 
-	       		IN NS		ns.<%= @zonename %>.
-
-<% if defined?(@ns) -%>
 <% @ns.each do |val| -%>
-ns.<%= @zonename %>. IN A <%= val %>
+					IN NS <%= val %>
 <% end -%>
+
+<% @mx.each do |key, val| -%>
+					IN MX <%= key %> <%= val %>
 <% end -%>

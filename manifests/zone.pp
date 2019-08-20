@@ -4,15 +4,15 @@
 # 99 -  srv records
 define named::zone(
                     $zonename      = $name,
-                    $zonemaster    = undef,
-                    $zonefile      = undef,
-                    $allowtransfer = [ 'none' ],
+                    $soa           = $name,
+                    $ns            = [ "ns.${name}." ],
+                    $mx            = { "mx.${name}." => '5' },
+                    $allowtransfer = [],
                     $replace       = true,
                     $notifyslaves  = true,
-                    $allowupdate   = undef,
-                    $alsonotify    = undef,
+                    $allowupdate   = [],
+                    $alsonotify    = [],
                     $ensure        = 'present',
-                    $ns            = [ '127.0.0.1' ],
                     $serial        = '1983120401',
                     $refresh       = '3600',
                     $retry         = '600',
@@ -20,14 +20,10 @@ define named::zone(
                     $minttl        = '60',
                     $default_ttl   = '3600',
                     $forwarders    = [],
+                    $zonemaster    = undef,
                   ) {
 
   validate_string($zonename)
-
-  if ($zonemaster)
-  {
-    validate_string($zonemaster)
-  }
 
   if ($allowupdate)
   {
@@ -56,24 +52,10 @@ define named::zone(
     notify  => Service[$named::params::servicename],
   }
 
-  if $zonemaster==undef
-  {
-    if ($zonefile)
-    {
-      concat::fragment{ "base zona ${named::params::zonedir}/${zonename}":
-        target => "${named::params::zonedir}/${zonename}",
-        source => $zonefile,
-        order  => '00',
-      }
-    }
-    else
-    {
-      concat::fragment{ "base zona ${named::params::zonedir}/${zonename}":
-        target  => "${named::params::zonedir}/${zonename}",
-        content => template("${module_name}/zonetemplate.erb"),
-        order   => '00',
-      }
-    }
+  concat::fragment{ "base zona ${named::params::zonedir}/${zonename}":
+    target  => "${named::params::zonedir}/${zonename}",
+    content => template("${module_name}/zonetemplate.erb"),
+    order   => '00',
   }
 
 
