@@ -14,5 +14,5 @@ $TTL	<%= @default_ttl %>
 <% end -%>
 
 <% @mx.each do |key, val| -%>
-					IN MX <%= key %> <%= val %>
+					IN MX <%= val %> <%= key %>
 <% end -%>
