@@ -1,11 +1,11 @@
 define named::zone::txtrecord (
                                 $value,
                                 $zonename,
-                                $record   = $name,
-                                $ttl      = undef,
-                                $class    = 'IN',
-                                $order    = '00',
-                                $description = undef,
+                                $record          = $name,
+                                $ttl             = undef,
+                                $class           = 'IN',
+                                $order           = '42',
+                                $description     = undef,
                                 $append_zonename = true,
                               ) {
 

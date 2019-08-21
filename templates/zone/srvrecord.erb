@@ -1,4 +1,4 @@
 <%- if defined?(@description) -%>
 ; <%= @description %>
 <%- end -%>
-_x-<%= @service %>._<%= @protocol %>.<% if defined?(@domain) %><%= @domain %><% else %><%= @zonename %>.<% end %> <% if defined?(@ttl) %><%= @ttl %><% end %><%= @class %> SRV <%= @priority %> <%= @weight %> <%= @port %> <%= @target %>
+_x-<%= @service %>._<%= @protocol %>.<% if defined?(@domain) %><%= @domain %><% else %><%= @zonename %>.<% end %>          <% if defined?(@ttl) %><%= @ttl %><% end %><%= @class %> SRV <%= @priority %> <%= @weight %> <%= @port %> <%= @target %>
