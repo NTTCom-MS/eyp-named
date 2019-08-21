@@ -1,5 +1,11 @@
 # CHANGELOG
 
+# 0.3.1
+
+* improved record management
+  - added optional description
+  - added ability to order records
+
 ## 0.3.0
 
 * MAJOR CHANGES:

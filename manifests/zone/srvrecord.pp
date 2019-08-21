@@ -21,11 +21,13 @@ define named::zone::srvrecord (
                                 $priority = '0',
                                 $weight   = '5',
                                 $class    = 'IN',
+                                $order    = '00',
+                                $description = undef,
                               ) {
 
   concat::fragment{ "srv record ${named::params::zonedir}/${zonename} - ${service} ${port} ${protocol} ${target} ${name} ${ttl} ${priority} ${weight}":
     target  => "${named::params::zonedir}/${zonename}",
     content => template("${module_name}/zone/srvrecord.erb"),
-    order   => '99',
+    order   => "99-${order}",
   }
 }
