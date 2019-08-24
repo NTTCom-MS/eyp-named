@@ -1,5 +1,9 @@
 # CHANGELOG
 
+# 0.3.2
+
+* improved zone notify support
+
 # 0.3.1
 
 * improved record management

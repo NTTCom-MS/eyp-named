@@ -13,11 +13,7 @@ zone "<%= @zonename %>" {
 	type slave;
 	<%- else -%>
 	type master;
-		<%- if @notifyslaves -%>
-	notify yes;
-		<%- else -%>
-	notify no;
-		<%- end -%>
+	notify <%= scope.function_bool2yesno([@notifyslaves]) %>;
 	<%- end -%>
 	allow-transfer {
 		<%- if @allowtransfer.any? -%>
