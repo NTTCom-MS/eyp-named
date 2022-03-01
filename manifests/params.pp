@@ -39,7 +39,7 @@ class named::params {
         {
           case $::operatingsystemrelease
           {
-            /^14.*$/:
+            /^[14,20].*$/:
             {
               $confdir='/etc/bind'
               $servicename='bind9'
