@@ -1,5 +1,9 @@
 # CHANGELOG
 
+# 0.3.3
+
+* Added Ubunutu20 support
+
 # 0.3.2
 
 * improved zone notify support
