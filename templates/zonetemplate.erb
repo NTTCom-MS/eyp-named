@@ -16,3 +16,7 @@ $TTL	<%= @default_ttl %>
 <% @mx.each do |key, val| -%>
 					IN MX <%= val %> <%= key %>
 <% end -%>
+
+<% @ptr.each do |key, val| -%>
+					IN PTR <%= val %> <%= key %>
+<% end -%>
