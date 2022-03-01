@@ -1,6 +1,6 @@
 {
   "name": "eyp-named",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": "eyp",
   "summary": "named management",
   "license": "Apache-2.0",
@@ -19,7 +19,7 @@
     },
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [ "14.04" ]
+      "operatingsystemrelease": [ "14.04", "20.04" ]
     }
   ],
   "requirements": [
