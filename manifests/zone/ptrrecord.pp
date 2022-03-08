@@ -1,6 +1,7 @@
 define named::zone::ptrrecord (
                                 $value,
-                                $zonename,
+                                $domain,
+                                $zonename        = $name,
                                 $record          = $name,
                                 $ttl             = undef,
                                 $class           = 'IN',

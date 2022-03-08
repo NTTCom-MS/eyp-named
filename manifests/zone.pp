@@ -5,9 +5,9 @@
 define named::zone(
                     $zonename      = $name,
                     $soa           = $name,
-                    $ns            = [ "ns.${name}." ],
-                    $mx            = { "mx.${name}." => '5' },
-                    $ptr           = [ "ptr.${name}." ],
+                    $domain        = $name,
+                    $ns            = [ "ns.${domain}." ],
+                    $mx            = { "mx.${domain}." => '5' },
                     $allowtransfer = [],
                     $replace       = true,
                     $notifyslaves  = true,
@@ -40,7 +40,7 @@ define named::zone(
   {
     concat::fragment{ "zone_${zonename}":
       target  => "${named::params::confdir}/puppet-managed.zones",
-      content => template("${module_name}/zone.erb")
+      content => template("${module_name}/zone.erb"),
     }
   }
 
@@ -58,6 +58,21 @@ define named::zone(
     content => template("${module_name}/zonetemplate.erb"),
     order   => '00',
   }
+
+#  concat { "${named::params::zonedir}/${reverse}.in-addr.arpa":
+#    ensure  => $ensure,
+#    owner   => 'root',
+#    group   => $named::params::osuser,
+#    mode    => '0640',
+#    replace => $replace,
+#    notify  => Service[$named::params::servicename],
+#  }
+
+#  concat::fragment{ "reverse zona ${named::params::zonedir}/${reverse}.in-addr.arpa":
+#    target  => "${named::params::zonedir}/${reverse}.in-addr.arpa",
+#    content => template("${module_name}/zonetemplate.erb"),
+#    order   => '01',
+# }
 
 
 }

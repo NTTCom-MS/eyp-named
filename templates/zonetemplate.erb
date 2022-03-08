@@ -1,6 +1,7 @@
 ;
 ; puppet managed file
 ;
+
 $TTL	<%= @default_ttl %>
 @		IN SOA	<%= @soa %>. root (
 					<%= @serial %>		; serial
@@ -15,8 +16,4 @@ $TTL	<%= @default_ttl %>
 
 <% @mx.each do |key, val| -%>
 					IN MX <%= val %> <%= key %>
-<% end -%>
-
-<% @ptr.each do |key, val| -%>
-					IN PTR <%= val %> <%= key %>
 <% end -%>
