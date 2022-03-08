@@ -59,20 +59,4 @@ define named::zone(
     order   => '00',
   }
 
-#  concat { "${named::params::zonedir}/${reverse}.in-addr.arpa":
-#    ensure  => $ensure,
-#    owner   => 'root',
-#    group   => $named::params::osuser,
-#    mode    => '0640',
-#    replace => $replace,
-#    notify  => Service[$named::params::servicename],
-#  }
-
-#  concat::fragment{ "reverse zona ${named::params::zonedir}/${reverse}.in-addr.arpa":
-#    target  => "${named::params::zonedir}/${reverse}.in-addr.arpa",
-#    content => template("${module_name}/zonetemplate.erb"),
-#    order   => '01',
-# }
-
-
 }
