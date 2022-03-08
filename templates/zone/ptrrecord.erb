@@ -1,0 +1,4 @@
+<%- if defined?(@description) -%>
+; <%= @description %>
+<%- end -%>
+<%= @record %>                                      <% if defined?(@ttl) %><%= @ttl %> <% end %><%= @class %> PTR <%= @value %><% if @append_zonename %>.<%= @domain %>.<% end %>

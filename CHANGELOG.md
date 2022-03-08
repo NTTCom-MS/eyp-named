@@ -1,5 +1,9 @@
 # CHANGELOG
 
+# 0.3.4
+
+* Added PTR register support
+
 # 0.3.3
 
 * Added Ubunutu20 support
