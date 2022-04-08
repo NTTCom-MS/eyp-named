@@ -2,22 +2,22 @@
 ; puppet managed file
 ;
 
-<% if @isreverse? -%>
-<%%$ORIGIN%> <%= @zonename %>
+<%- if @isreverse -%>
+$ORIGIN <%= @zonename %>
 <%- end -%>
 
-$TTL	<%= @default_ttl %>
-@		IN SOA	<%= @soa %>. root (
-					<%= @serial %>		; serial
-					<%= @refresh %>			; refresh
-					<%= @retry %>			; retry
-					<%= @expiry %>			; expiry
-					<%= @minttl %>)			; min TTL
+$TTL    <%= @default_ttl %>
+@               IN SOA  <%= @soa %>. root (
+                                        <%= @serial %>          ; serial
+                                        <%= @refresh %>                 ; refresh
+                                        <%= @retry %>                   ; retry
+                                        <%= @expiry %>                  ; expiry
+                                        <%= @minttl %>)                 ; min TTL
 
 <% @ns.each do |val| -%>
-					IN NS <%= val %>
+                                        IN NS <%= val %>
 <% end -%>
 
 <% @mx.each do |key, val| -%>
-					IN MX <%= val %> <%= key %>
+                                        IN MX <%= val %> <%= key %>
 <% end -%>
