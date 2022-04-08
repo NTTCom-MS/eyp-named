@@ -22,6 +22,7 @@ define named::zone(
                     $default_ttl   = '3600',
                     $forwarders    = [],
                     $zonemaster    = undef,
+                    $isreverse     = false,
                   ) {
 
   validate_string($zonename)
