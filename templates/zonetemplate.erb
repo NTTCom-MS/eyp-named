@@ -2,6 +2,10 @@
 ; puppet managed file
 ;
 
+<% if @isreverse? -%>
+$ORIGIN <%= @zonename %>
+<%- end -%>
+
 $TTL	<%= @default_ttl %>
 @		IN SOA	<%= @soa %>. root (
 					<%= @serial %>		; serial

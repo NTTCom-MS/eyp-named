@@ -1,5 +1,9 @@
 # CHANGELOG
 
+# 0.3.5
+
+* Reverse zone bug
+
 # 0.3.4
 
 * Added PTR register support
