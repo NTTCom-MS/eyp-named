@@ -10,6 +10,7 @@ zone "<%= @zonename %>" {
 	file "<%= scope.lookupvar('named::params::zonedir')%>/<%= @zonename %>";
 	<%- if defined?(@zonemaster) -%>
 	masters { <%= @zonemaster %>; };
+        masterfile-format text;
 	type slave;
 	<%- else -%>
 	type master;
