@@ -28,6 +28,11 @@ zone "<%= @zonename %>" {
 		<% @allowupdate.each do |val| -%><%= val %>;<% end %>
 	};
 	<%- end -%>
+        <%- if @allownotify.any? -%>
+	allow-notify {
+		<% @allownotify.each do |val| -%><%= val %>;<% end %>
+	};
+	<%- end -%>
 	<%- if @alsonotify.any? -%>
 	also-notify {
 		<% @alsonotify.each do |val| -%><%= val %>;<% end %>
