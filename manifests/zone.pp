@@ -9,6 +9,7 @@ define named::zone(
                     $ns            = [ "ns.${domain}." ],
                     $mx            = { "mx.${domain}." => '5' },
                     $allowtransfer = [],
+                    $allownotify   = [],
                     $replace       = true,
                     $notifyslaves  = true,
                     $allowupdate   = [],
