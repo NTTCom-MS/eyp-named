@@ -1,5 +1,9 @@
 # CHANGELOG
 
+# 0.3.6
+
+* Using timestamp as zone serial reference
+
 # 0.3.5
 
 * Reverse zone bug
