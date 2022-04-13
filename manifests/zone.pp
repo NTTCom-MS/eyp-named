@@ -15,7 +15,7 @@ define named::zone(
                     $allowupdate   = [],
                     $alsonotify    = [],
                     $ensure        = 'present',
-                    $serial        = '1983120401',
+                    $serial        = (Timestamp.new().strftime('%Y%m%d%H%M')).chop(),
                     $refresh       = '3600',
                     $retry         = '600',
                     $expiry        = '86400',
