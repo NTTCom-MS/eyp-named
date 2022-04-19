@@ -12,9 +12,9 @@ options {
 	listen-on-v6 port 53 { none; };
 <% end %>
 	directory 	"<%= scope.lookupvar('named::params::directory') %>";
-	dump-file 	"/var/named/data/cache_dump.db";
-        statistics-file "/var/named/data/named_stats.txt";
-        memstatistics-file "/var/named/data/named_mem_stats.txt";
+	dump-file 	"<%= scope.lookupvar('named::params::directory') %>/data/cache_dump.db";
+        statistics-file "<%= scope.lookupvar('named::params::directory') %>/data/named_stats.txt";
+        memstatistics-file "<%= scope.lookupvar('named::params::directory') %>/data/named_mem_stats.txt";
 <% if @resolver %>
 	allow-query     { any; };
 	allow-recursion-on { any; };
