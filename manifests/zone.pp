@@ -50,7 +50,7 @@ define named::zone(
     ensure  => $ensure,
     owner   => 'root',
     group   => $named::params::osuser,
-    mode    => '0640',
+    mode    => '0660',
     replace => $replace,
     notify  => Service[$named::params::servicename],
   }
