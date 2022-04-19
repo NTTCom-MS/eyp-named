@@ -45,7 +45,7 @@ class named::params {
               $servicename='bind9'
               $directory='/var/cache/bind'
 
-              $zonedir='/etc/bind'
+              $zonedir='/var/named'
 
               $options_file='/etc/bind/named.conf.options'
               $localconfig_file='/etc/bind/named.conf.local'
